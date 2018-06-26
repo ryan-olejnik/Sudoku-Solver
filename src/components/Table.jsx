@@ -212,11 +212,118 @@ class Table extends Component {
     })
   }
 
+  clearTable(){
+    this.setState({
+      row1: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row2: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row3: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row4: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row5: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row6: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row7: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row8: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row9: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      }
+    });
+  }
+
   componentWillReceiveProps(newProps){
     if (newProps.fill === 'easy'){
       console.log('Filling EasyExample');
       this.fillEasyExample();
+    } else if (newProps.fill === null){
+      this.clearTable();
     }
+
   }
 
   render() {

@@ -19,6 +19,7 @@ class App extends Component {
           <h1 className="App-title">Sudoku Wizard</h1>
         </header>
         <button onClick={()=>{this.setState({fill: 'easy'})}}>Fill Easy Example</button>
+        <button onClick={()=>{this.setState({fill: null})}}>Clear</button>
         <Table fill={this.state.fill} />
       </div>
     );
