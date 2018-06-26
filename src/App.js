@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Table from './components/Table.jsx';
 import './App.css';
 
@@ -8,9 +7,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Sudoku Wizard</h1>
         </header>
-        <Table />
+        <Table fill='easy'/>
       </div>
     );
   }

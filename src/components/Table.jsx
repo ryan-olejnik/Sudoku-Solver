@@ -107,6 +107,119 @@ class Table extends Component {
       }
     }
   }
+
+  fillEasyExample(){
+    this.setState({
+      row1: {
+        col1: 2,
+        col2: null,
+        col3: 4,
+        col4: 3,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row2: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: 8,
+        col6: 2,
+        col7: null,
+        col8: 9,
+        col9: 4,
+      },
+      row3: {
+        col1: 8,
+        col2: null,
+        col3: 3,
+        col4: 9,
+        col5: 5,
+        col6: null,
+        col7: null,
+        col8: 2,
+        col9: null,
+      },
+      row4: {
+        col1: 9,
+        col2: 2,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: 4,
+        col8: 5,
+        col9: null,
+      },
+      row5: {
+        col1: 6,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: 2,
+      },
+      row6: {
+        col1: null,
+        col2: 4,
+        col3: 1,
+        col4: null,
+        col5: null,
+        col6: null,
+        col7: null,
+        col8: 8,
+        col9: 7,
+      },
+      row7: {
+        col1: null,
+        col2: 5,
+        col3: null,
+        col4: null,
+        col5: 6,
+        col6: 3,
+        col7: 7,
+        col8: null,
+        col9: 9,
+      },
+      row8: {
+        col1: 1,
+        col2: 6,
+        col3: null,
+        col4: 8,
+        col5: 9,
+        col6: null,
+        col7: null,
+        col8: null,
+        col9: null,
+      },
+      row9: {
+        col1: null,
+        col2: null,
+        col3: null,
+        col4: null,
+        col5: null,
+        col6: 1,
+        col7: 2,
+        col8: null,
+        col9: 8,
+      }
+    })
+    console.log('inside fillEasyExample: donee');
+  }
+
+  componentDidMount(){
+    if (this.props.fill === 'easy'){
+      console.log('Filling EasyExample');
+      this.fillEasyExample();
+    }
+  }
+
   render() {
     return (
       <div className="Table">
