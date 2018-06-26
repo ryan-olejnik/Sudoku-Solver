@@ -333,7 +333,7 @@ class Table extends Component {
   }
 
   changeHandler(row, col, newValue){
-    console.log(this.state.table[`row${row}`][`col${col}`]);
+    // console.log(this.state.table[`row${row}`][`col${col}`]);
     let table = this.state.table;
     table[`row${row}`][`col${col}`] = newValue;
     this.setState({ table: table })
@@ -445,8 +445,8 @@ class Table extends Component {
         </tr>
         </tbody>
         </table>
-      <button onClick={()=>{sudokuAnalyzer.checkRowForDuplicates(this.state.table, 1)}} >check row 1</button>
-      <button onClick={()=>{sudokuAnalyzer.checkColForDuplicates(this.state.table, 1)}} >check col 1</button>
+      <button onClick={()=>{console.log('Duplicates in row 1?', sudokuAnalyzer.checkRowForDuplicates(this.state.table, 1))}} >check row 1</button>
+      <button onClick={()=>{console.log('Duplicates in col1?', sudokuAnalyzer.checkColForDuplicates(this.state.table, 1))}} >check col 1</button>
       <button onClick={()=>{this.changeHandler(1,1,5)}} >change row1, col1 to 5</button>
       </div>
     );
