@@ -210,11 +210,10 @@ class Table extends Component {
         col9: 8,
       }
     })
-    console.log('inside fillEasyExample: donee');
   }
 
-  componentDidMount(){
-    if (this.props.fill === 'easy'){
+  componentWillReceiveProps(newProps){
+    if (newProps.fill === 'easy'){
       console.log('Filling EasyExample');
       this.fillEasyExample();
     }
@@ -226,18 +225,18 @@ class Table extends Component {
       <table className="sudokuTable">
         <tbody>
         <tr> 
-          <td ><InputBox number={this.state.row1.col1}/></td>
-          <td ><InputBox number={this.state.row1.col2}/></td>
-          <td  className='right-edge-bold' ><InputBox number={this.state.row1.col3}/></td>
-          <td  className='left-edge-bold' ><InputBox number={this.state.row1.col4}/></td>
-          <td ><InputBox number={this.state.row1.col5}/></td>
-          <td  className='right-edge-bold' ><InputBox number={this.state.row1.col6}/></td>
-          <td  className='left-edge-bold' ><InputBox number={this.state.row1.col7}/></td>
-          <td ><InputBox number={this.state.row1.col8}/></td>
-          <td ><InputBox number={this.state.row1.col9}/></td>
+          <td className='top-edge-bold left-edge-bold'><InputBox number={this.state.row1.col1}/></td>
+          <td className='top-edge-bold'><InputBox number={this.state.row1.col2}/></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row1.col3}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row1.col4}/></td>
+          <td className='top-edge-bold'><InputBox number={this.state.row1.col5}/></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row1.col6}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row1.col7}/></td>
+          <td className='top-edge-bold'><InputBox number={this.state.row1.col8}/></td>
+          <td className='top-edge-bold right-edge-bold'><InputBox number={this.state.row1.col9}/></td>
         </tr>
         <tr>
-          <td><InputBox number={this.state.row2.col1}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.row2.col1}/></td>
           <td><InputBox number={this.state.row2.col2}/></td>
           <td className='right-edge-bold' ><InputBox number={this.state.row2.col3}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row2.col4}/></td>
@@ -245,10 +244,10 @@ class Table extends Component {
           <td className='right-edge-bold' ><InputBox number={this.state.row2.col6}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row2.col7}/></td>
           <td><InputBox number={this.state.row2.col8}/></td>
-          <td><InputBox number={this.state.row2.col9}/></td>
+          <td className='right-edge-bold'><InputBox number={this.state.row2.col9}/></td>
         </tr>
         <tr>
-          <td className='bottom-edge-bold'><InputBox number={this.state.row3.col1}/></td>
+          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.row3.col1}/></td>
           <td className='bottom-edge-bold'><InputBox number={this.state.row3.col2}/></td>
           <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.row3.col3}/></td>
           <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.row3.col4}/></td>
@@ -256,10 +255,10 @@ class Table extends Component {
           <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.row3.col6}/></td>
           <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.row3.col7}/></td>
           <td className='bottom-edge-bold'><InputBox number={this.state.row3.col8}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.row3.col9}/></td>
+          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.row3.col9}/></td>
         </tr>
         <tr>
-          <td className='top-edge-bold' ><InputBox number={this.state.row4.col1}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row4.col1}/></td>
           <td className='top-edge-bold' ><InputBox number={this.state.row4.col2}/></td>
           <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row4.col3}/></td>
           <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row4.col4}/></td>
@@ -267,10 +266,10 @@ class Table extends Component {
           <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row4.col6}/></td>
           <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row4.col7}/></td>
           <td className='top-edge-bold' ><InputBox number={this.state.row4.col8}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.row4.col9}/></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row4.col9}/></td>
         </tr>
         <tr>
-          <td><InputBox number={this.state.row5.col1}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.row5.col1}/></td>
           <td><InputBox number={this.state.row5.col2}/></td>
           <td className='right-edge-bold' ><InputBox number={this.state.row5.col3}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row5.col4}/></td>
@@ -278,10 +277,10 @@ class Table extends Component {
           <td className='right-edge-bold' ><InputBox number={this.state.row5.col6}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row5.col7}/></td>
           <td><InputBox number={this.state.row5.col8}/></td>
-          <td><InputBox number={this.state.row5.col9}/></td>
+          <td className='right-edge-bold'><InputBox number={this.state.row5.col9}/></td>
         </tr>
         <tr>
-          <td className='bottom-edge-bold' ><InputBox number={this.state.row6.col1}/></td>
+          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.row6.col1}/></td>
           <td className='bottom-edge-bold' ><InputBox number={this.state.row6.col2}/></td>
           <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.row6.col3}/></td>
           <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.row6.col4}/></td>
@@ -289,10 +288,10 @@ class Table extends Component {
           <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.row6.col6}/></td>
           <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.row6.col7}/></td>
           <td className='bottom-edge-bold' ><InputBox number={this.state.row6.col8}/></td>
-          <td className='bottom-edge-bold' ><InputBox number={this.state.row6.col9}/></td>
+          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.row6.col9}/></td>
         </tr>
         <tr>
-          <td className='top-edge-bold' ><InputBox number={this.state.row7.col1}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row7.col1}/></td>
           <td className='top-edge-bold' ><InputBox number={this.state.row7.col2}/></td>
           <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row7.col3}/></td>
           <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row7.col4}/></td>
@@ -300,10 +299,10 @@ class Table extends Component {
           <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row7.col6}/></td>
           <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.row7.col7}/></td>
           <td className='top-edge-bold' ><InputBox number={this.state.row7.col8}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.row7.col9}/></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.row7.col9}/></td>
         </tr>
         <tr>
-          <td><InputBox number={this.state.row8.col1}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.row8.col1}/></td>
           <td><InputBox number={this.state.row8.col2}/></td>
           <td className='right-edge-bold' ><InputBox number={this.state.row8.col3}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row8.col4}/></td>
@@ -311,18 +310,18 @@ class Table extends Component {
           <td className='right-edge-bold' ><InputBox number={this.state.row8.col6}/></td>
           <td className='left-edge-bold' ><InputBox number={this.state.row8.col7}/></td>
           <td><InputBox number={this.state.row8.col8}/></td>
-          <td><InputBox number={this.state.row8.col9}/></td>
+          <td className='right-edge-bold'><InputBox number={this.state.row8.col9}/></td>
         </tr>
         <tr>
-          <td><InputBox number={this.state.row9.col1}/></td>
-          <td><InputBox number={this.state.row9.col2}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.row9.col3}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.row9.col4}/></td>
-          <td><InputBox number={this.state.row9.col5}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.row9.col6}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.row9.col7}/></td>
-          <td><InputBox number={this.state.row9.col8}/></td>
-          <td><InputBox number={this.state.row9.col9}/></td>
+          <td className='left-edge-bold bottom-edge-bold'><InputBox number={this.state.row9.col1}/></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.row9.col2}/></td>
+          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.row9.col3}/></td>
+          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.row9.col4}/></td>
+          <td className='right-edge-bold bottom-edge-bold'><InputBox number={this.state.row9.col5}/></td>
+          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.row9.col6}/></td>
+          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.row9.col7}/></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.row9.col8}/></td>
+          <td className='right-edge-bold bottom-edge-bold'><InputBox number={this.state.row9.col9}/></td>
         </tr>
         </tbody>
         </table>
