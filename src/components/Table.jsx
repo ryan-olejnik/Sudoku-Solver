@@ -323,8 +323,9 @@ class Table extends Component {
     } else if (newProps.fill === null){
       this.clearTable();
     }
-
   }
+
+  
 
   render() {
     return (
