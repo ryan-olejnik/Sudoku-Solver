@@ -356,92 +356,92 @@ class Table extends Component {
           <td className='top-edge-bold right-edge-bold'><InputBox number={this.state.table.row1.col9} changeHandler={(newValue)=>{this.changeHandler(1,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='left-edge-bold'><InputBox number={this.state.table.row2.col1}/></td>
-          <td><InputBox number={this.state.table.row2.col2}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row2.col3}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row2.col4}/></td>
-          <td><InputBox number={this.state.table.row2.col5}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row2.col6}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row2.col7}/></td>
-          <td><InputBox number={this.state.table.row2.col8}/></td>
-          <td className='right-edge-bold'><InputBox number={this.state.table.row2.col9}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.table.row2.col1} changeHandler={(newValue)=>{this.changeHandler(2,1,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row2.col2} changeHandler={(newValue)=>{this.changeHandler(2,2,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row2.col3} changeHandler={(newValue)=>{this.changeHandler(2,3,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row2.col4} changeHandler={(newValue)=>{this.changeHandler(2,4,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row2.col5} changeHandler={(newValue)=>{this.changeHandler(2,5,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row2.col6} changeHandler={(newValue)=>{this.changeHandler(2,6,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row2.col7} changeHandler={(newValue)=>{this.changeHandler(2,7,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row2.col8} changeHandler={(newValue)=>{this.changeHandler(2,8,newValue)}} /></td>
+          <td className='right-edge-bold'><InputBox number={this.state.table.row2.col9} changeHandler={(newValue)=>{this.changeHandler(2,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col1}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col2}/></td>
-          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col3}/></td>
-          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col4}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col5}/></td>
-          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col6}/></td>
-          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col7}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col8}/></td>
-          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col9}/></td>
+          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col1} changeHandler={(newValue)=>{this.changeHandler(3,1,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col2} changeHandler={(newValue)=>{this.changeHandler(3,2,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col3} changeHandler={(newValue)=>{this.changeHandler(3,3,newValue)}} /></td>
+          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col4} changeHandler={(newValue)=>{this.changeHandler(3,4,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col5} changeHandler={(newValue)=>{this.changeHandler(3,5,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col6} changeHandler={(newValue)=>{this.changeHandler(3,6,newValue)}} /></td>
+          <td className='bottom-edge-bold left-edge-bold'><InputBox number={this.state.table.row3.col7} changeHandler={(newValue)=>{this.changeHandler(3,7,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row3.col8} changeHandler={(newValue)=>{this.changeHandler(3,8,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold'><InputBox number={this.state.table.row3.col9} changeHandler={(newValue)=>{this.changeHandler(3,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col1}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col2}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col3}/></td>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col4}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col5}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col6}/></td>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col7}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col8}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col9}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col1} changeHandler={(newValue)=>{this.changeHandler(4,1,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col2} changeHandler={(newValue)=>{this.changeHandler(4,2,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col3} changeHandler={(newValue)=>{this.changeHandler(4,3,newValue)}} /></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col4} changeHandler={(newValue)=>{this.changeHandler(4,4,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col5} changeHandler={(newValue)=>{this.changeHandler(4,5,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col6} changeHandler={(newValue)=>{this.changeHandler(4,6,newValue)}} /></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row4.col7} changeHandler={(newValue)=>{this.changeHandler(4,7,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row4.col8} changeHandler={(newValue)=>{this.changeHandler(4,8,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row4.col9} changeHandler={(newValue)=>{this.changeHandler(4,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='left-edge-bold'><InputBox number={this.state.table.row5.col1}/></td>
-          <td><InputBox number={this.state.table.row5.col2}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row5.col3}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row5.col4}/></td>
-          <td><InputBox number={this.state.table.row5.col5}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row5.col6}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row5.col7}/></td>
-          <td><InputBox number={this.state.table.row5.col8}/></td>
-          <td className='right-edge-bold'><InputBox number={this.state.table.row5.col9}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.table.row5.col1} changeHandler={(newValue)=>{this.changeHandler(5,1,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row5.col2} changeHandler={(newValue)=>{this.changeHandler(5,2,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row5.col3} changeHandler={(newValue)=>{this.changeHandler(5,3,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row5.col4} changeHandler={(newValue)=>{this.changeHandler(5,4,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row5.col5} changeHandler={(newValue)=>{this.changeHandler(5,5,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row5.col6} changeHandler={(newValue)=>{this.changeHandler(5,6,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row5.col7} changeHandler={(newValue)=>{this.changeHandler(5,7,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row5.col8} changeHandler={(newValue)=>{this.changeHandler(5,8,newValue)}} /></td>
+          <td className='right-edge-bold'><InputBox number={this.state.table.row5.col9} changeHandler={(newValue)=>{this.changeHandler(5,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col1}/></td>
-          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col2}/></td>
-          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col3}/></td>
-          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col4}/></td>
-          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col5}/></td>
-          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col6}/></td>
-          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col7}/></td>
-          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col8}/></td>
-          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col9}/></td>
+          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col1} changeHandler={(newValue)=>{this.changeHandler(6,1,newValue)}} /></td>
+          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col2} changeHandler={(newValue)=>{this.changeHandler(6,2,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col3} changeHandler={(newValue)=>{this.changeHandler(6,3,newValue)}} /></td>
+          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col4} changeHandler={(newValue)=>{this.changeHandler(6,4,newValue)}} /></td>
+          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col5} changeHandler={(newValue)=>{this.changeHandler(6,5,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col6} changeHandler={(newValue)=>{this.changeHandler(6,6,newValue)}} /></td>
+          <td className='bottom-edge-bold left-edge-bold' ><InputBox number={this.state.table.row6.col7} changeHandler={(newValue)=>{this.changeHandler(6,7,newValue)}} /></td>
+          <td className='bottom-edge-bold' ><InputBox number={this.state.table.row6.col8} changeHandler={(newValue)=>{this.changeHandler(6,8,newValue)}} /></td>
+          <td className='bottom-edge-bold right-edge-bold' ><InputBox number={this.state.table.row6.col9} changeHandler={(newValue)=>{this.changeHandler(6,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col1}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col2}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col3}/></td>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col4}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col5}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col6}/></td>
-          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col7}/></td>
-          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col8}/></td>
-          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col9}/></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col1} changeHandler={(newValue)=>{this.changeHandler(7,1,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col2} changeHandler={(newValue)=>{this.changeHandler(7,2,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col3} changeHandler={(newValue)=>{this.changeHandler(7,3,newValue)}} /></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col4} changeHandler={(newValue)=>{this.changeHandler(7,4,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col5} changeHandler={(newValue)=>{this.changeHandler(7,5,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col6} changeHandler={(newValue)=>{this.changeHandler(7,6,newValue)}} /></td>
+          <td className='top-edge-bold left-edge-bold' ><InputBox number={this.state.table.row7.col7} changeHandler={(newValue)=>{this.changeHandler(7,7,newValue)}} /></td>
+          <td className='top-edge-bold' ><InputBox number={this.state.table.row7.col8} changeHandler={(newValue)=>{this.changeHandler(7,8,newValue)}} /></td>
+          <td className='top-edge-bold right-edge-bold' ><InputBox number={this.state.table.row7.col9} changeHandler={(newValue)=>{this.changeHandler(7,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='left-edge-bold'><InputBox number={this.state.table.row8.col1}/></td>
-          <td><InputBox number={this.state.table.row8.col2}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row8.col3}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row8.col4}/></td>
-          <td><InputBox number={this.state.table.row8.col5}/></td>
-          <td className='right-edge-bold' ><InputBox number={this.state.table.row8.col6}/></td>
-          <td className='left-edge-bold' ><InputBox number={this.state.table.row8.col7}/></td>
-          <td><InputBox number={this.state.table.row8.col8}/></td>
-          <td className='right-edge-bold'><InputBox number={this.state.table.row8.col9}/></td>
+          <td className='left-edge-bold'><InputBox number={this.state.table.row8.col1} changeHandler={(newValue)=>{this.changeHandler(8,1,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row8.col2} changeHandler={(newValue)=>{this.changeHandler(8,2,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row8.col3} changeHandler={(newValue)=>{this.changeHandler(8,3,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row8.col4} changeHandler={(newValue)=>{this.changeHandler(8,4,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row8.col5} changeHandler={(newValue)=>{this.changeHandler(8,5,newValue)}} /></td>
+          <td className='right-edge-bold' ><InputBox number={this.state.table.row8.col6} changeHandler={(newValue)=>{this.changeHandler(8,6,newValue)}} /></td>
+          <td className='left-edge-bold' ><InputBox number={this.state.table.row8.col7} changeHandler={(newValue)=>{this.changeHandler(8,7,newValue)}} /></td>
+          <td><InputBox number={this.state.table.row8.col8} changeHandler={(newValue)=>{this.changeHandler(8,8,newValue)}} /></td>
+          <td className='right-edge-bold'><InputBox number={this.state.table.row8.col9} changeHandler={(newValue)=>{this.changeHandler(8,9,newValue)}} /></td>
         </tr>
         <tr>
-          <td className='left-edge-bold bottom-edge-bold'><InputBox number={this.state.table.row9.col1}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.table.row9.col2}/></td>
-          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col3}/></td>
-          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col4}/></td>
-          <td className='right-edge-bold bottom-edge-bold'><InputBox number={this.state.table.row9.col5}/></td>
-          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col6}/></td>
-          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col7}/></td>
-          <td className='bottom-edge-bold'><InputBox number={this.state.table.row9.col8}/></td>
-          <td className='right-edge-bold bottom-edge-bold'><InputBox number={this.state.table.row9.col9}/></td>
+          <td className='left-edge-bold bottom-edge-bold'><InputBox number={this.state.table.row9.col1} changeHandler={(newValue)=>{this.changeHandler(9,1,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row9.col2} changeHandler={(newValue)=>{this.changeHandler(9,2,newValue)}} /></td>
+          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col3} changeHandler={(newValue)=>{this.changeHandler(9,3,newValue)}} /></td>
+          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col4} changeHandler={(newValue)=>{this.changeHandler(9,4,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row9.col5} changeHandler={(newValue)=>{this.changeHandler(9,5,newValue)}} /></td>
+          <td className='right-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col6} changeHandler={(newValue)=>{this.changeHandler(9,6,newValue)}} /></td>
+          <td className='left-edge-bold bottom-edge-bold' ><InputBox number={this.state.table.row9.col7} changeHandler={(newValue)=>{this.changeHandler(9,7,newValue)}} /></td>
+          <td className='bottom-edge-bold'><InputBox number={this.state.table.row9.col8} changeHandler={(newValue)=>{this.changeHandler(9,8,newValue)}} /></td>
+          <td className='right-edge-bold bottom-edge-bold'><InputBox number={this.state.table.row9.col9} changeHandler={(newValue)=>{this.changeHandler(9,9,newValue)}} /></td>
         </tr>
         </tbody>
         </table>
