@@ -17,13 +17,13 @@ class InputBox extends Component {
     if (!this.state.number){
       return (
         <React.Fragment>
-          <textarea rows="1" cols="9" maxlength='9' value='' />
+          <textarea rows="1" cols="1" maxLength='1' value='' />
         </React.Fragment>
       );
     } else {
       return (
         <React.Fragment>
-          <textarea rows="1" cols="9" maxlength='9' value={this.state.number} />
+          <textarea rows="1" cols="1" maxLength='1' value={this.state.number} />
         </React.Fragment>
       );
       

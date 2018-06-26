@@ -1,18 +1,28 @@
-table.cinereousTable {
+table.sudokuTable {
   font-family: Arial, Helvetica, sans-serif;
-  border: 6px solid #948473;
+  border: 3px solid #948473;
   background-color: #FFE3C6;
-  width: 80%;
   margin:10%;
   text-align: center;
+  margin: auto;
 }
-table.cinereousTable td, table.cinereousTable th {
+table.sudokuTable td, table.sudokuTable th {
   border: 1px solid #948473;
   padding: 4px 4px;
 }
-table.cinereousTable tbody td {
+table.sudokuTable tbody td {
   font-size: 13px;
 }
-table.cinereousTable tfoot td {
-  font-size: 16px;
+
+.bottom-edge-bold {
+  border-bottom-width: 3px !important;
+}
+.left-edge-bold {
+  border-left-width: 3px !important;
+}
+.right-edge-bold {
+  border-right-width: 3px !important;
+}
+.top-edge-bold {
+  border-top-width: 3px !important;
 }

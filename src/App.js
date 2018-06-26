@@ -9,7 +9,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Sudoku Wizard</h1>
         </header>
-        <Table fill='easy'/>
+        <Table fill='easy' />
       </div>
     );
   }
