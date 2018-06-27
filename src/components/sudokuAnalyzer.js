@@ -209,9 +209,31 @@ module.exports = {
 
   },
 
+  determineSquare(row, col){
+    // Determine what square (a, b, c...) the cell (row, col) is in:
+    if (1 <= row && row <= 3 && 1 <= col && col <= 3){
+      return 'a';
+    } else if (1 <= row && row <= 3 && 4 <= col && col <= 6){
+      return 'b';
+    } else if (1 <= row && row <= 3 && 7 <= col && col <= 9){
+      return 'c';
+    } else if (4 <= row && row <= 6 && 1 <= col && col <= 3){
+      return 'd';
+    } else if (4 <= row && row <= 6 && 4 <= col && col <= 6){
+      return 'e';
+    } else if (4 <= row && row <= 6 && 7 <= col && col <= 9){
+      return 'f';
+    } else if (7 <= row && row <= 9 && 1 <= col && col <= 3){
+      return 'g';
+    } else if (7 <= row && row <= 9 && 4 <= col && col <= 6){
+      return 'h';
+    } else if (7 <= row && row <= 9 && 7 <= col && col <= 9){
+      return 'i';
+    }    
+  },
+
   isCellValid: function(table, row, col){
-
-
+    return true;
   }
 
 
