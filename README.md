@@ -1,6 +1,6 @@
 ## Description
 
-Sudoku solver created using React.js, which will solve sudoku puzzles using a backtracking algorithm.
+Sudoku solver created using React.js.
 Currently in progress...
 
 
