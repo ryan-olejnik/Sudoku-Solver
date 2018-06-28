@@ -107,7 +107,8 @@ class Table extends Component {
             col8: null,
             col9: null,
           }
-        }
+        }, 
+        vacancyList: []
     }
     this.changeHandler = this.changeHandler.bind(this);
   }
@@ -446,10 +447,12 @@ class Table extends Component {
         </tr>
         </tbody>
         </table>
-      <button onClick={()=>{console.log('Duplicates in row 1?', sudokuAnalyzer.checkRowForDuplicates(this.state.table, 1))}} >check row 1</button>
-      <button onClick={()=>{console.log('Duplicates in col1?', sudokuAnalyzer.checkColForDuplicates(this.state.table, 1))}} >check col 1</button>
-      <button onClick={()=>{console.log('Duplicates in Square b?', sudokuAnalyzer.checkSquareForDuplicates(this.state.table, 'i'))}} >check Square ?</button>
-      <button onClick={()=>{this.changeHandler(1,1,5)}} >change row1, col1 to 5</button>
+      {/*<button onClick={()=>{console.log('Duplicates in row 1?', sudokuAnalyzer.checkRowForDuplicates(this.state.table, 1))}} >check row 1</button>*/}
+      {/*<button onClick={()=>{console.log('Duplicates in col1?', sudokuAnalyzer.checkColForDuplicates(this.state.table, 1))}} >check col 1</button>*/}
+      {/*<button onClick={()=>{console.log('Duplicates in Square b?', sudokuAnalyzer.checkSquareForDuplicates(this.state.table, 'a'))}} >check Square ?</button>*/}
+      <button onClick={()=>{console.log('Cell(row1, col1) valid?', sudokuAnalyzer.isCellValid(this.state.table, 1,1))}} >Check Cell row1, col1</button>
+      <button onClick={()=>{console.log('Valid numbers for (row5, col5) are:', sudokuAnalyzer.determineValidNumbers(this.state.table, 5,5))}} >Determine Valid Numbers for row5,col5</button>
+      <button onClick={()=>{sudokuAnalyzer.analyzeVacancies(this.state.table, [])}} >Determine Valid Numbers for all Vacancies</button>
       </div>
     );
   }
