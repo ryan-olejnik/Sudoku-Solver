@@ -1,4 +1,4 @@
-module.exports = {
+const sudokuAnalyzer = {
   checkRowForDuplicates: function(table, rowNumber){
     let numbersInRow = {};
     for (let col = 1; col <=9; col++){
@@ -262,7 +262,8 @@ module.exports = {
     return validNumbers;
   },
 
-  analyzeVacancies(table, vacancyList){
+  analyzeVacancies(table){
+    let vacancyList = [];
     for (let row =1; row <= 9; row++){
       for (let col = 1; col <= 9; col++){
         let currentCellValue = table[`row${row}`][`col${col}`];
@@ -271,17 +272,17 @@ module.exports = {
           let newVacancy = {
             row: row,
             col: col,
-            possibleValues: this.determineValidNumbers(table, row, col)
+            possibleValues: this.determineValidNumbers(table, row, col),
+            currentValueIndex: 0
           };
           vacancyList.push(newVacancy);          
         }
       }
     }
-
     let sortedVacancyList = vacancyList.sort(function(a,b){return a.possibleValues.length - b.possibleValues.length});
-    console.log(sortedVacancyList);
-    return vacancyList;
+    // console.log(sortedVacancyList);
+    return sortedVacancyList;
   }
-
-
 }
+
+export default sudokuAnalyzer;
