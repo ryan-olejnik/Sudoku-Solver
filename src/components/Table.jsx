@@ -108,7 +108,7 @@ class Table extends Component {
             col9: null,
           }
         }, 
-        vacancyList: [],
+        vacancyList: [], // (sorted)
         currentVacancyIndex: 0 // Start at the first item in the vacancyList
     }
     this.changeHandler = this.changeHandler.bind(this);
@@ -341,20 +341,85 @@ class Table extends Component {
     table[`row${row}`][`col${col}`] = newValue;
     this.setState({ table: table })
   }
+  
+  testValue(row, col){
+    let stopIndex = 5; 
+    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, testing value:${this.state.table[`row${row}`][`col${col}`]} in row:${row}, col:${col}`);
+
+    let table = this.state.table;
+    // let vacancyList = this.state.vacancyList;
+    if (sudokuAnalyzer.isCellValid(table, row, col)){
+      console.log(`value ${this.state.table[`row${row}`][`col${col}`]} in row ${row}, col ${col} is valid!, moving on to next vacancy...`);
+
+      // ONLY GO THROUGH THE FIRST 2 VALUES FOR NOW
+      if (this.state.currentVacancyIndex < stopIndex){
+        // Move on to the NEXT VACANCY
+        let currentVacancyIndex = this.state.currentVacancyIndex + 1; 
+        let currentValueIndex = this.state.vacancyList[currentVacancyIndex].currentValueIndex;
+        let row = this.state.vacancyList[currentVacancyIndex]['row'];
+        let col = this.state.vacancyList[currentVacancyIndex]['col'];
+        table[`row${row}`][`col${col}`] = this.state.vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex];
+
+        this.setState({
+          currentVacancyIndex: currentVacancyIndex,
+          table: table
+        }, ()=>{this.testValue(row, col)});
+
+        //currentVacancyIndex ++
+        // THEN
+        // set next vacancy's value to possibleValues[currentVacancyIndex]
+        //THEN
+        //testValue()
+
+
+      } else if (this.state.currentVacancyIndex === stopIndex){
+        console.log('DONE!!!')
+      } else {
+        console.log('Somthing went wrong....')
+      }
+    } else {
+      console.log('Else: Cell Invalid....... ');
+    }
+
+
+    // else {
+    //   ---------------
+    //   Cell is NOT valid, 
+
+    //   if (that was the last value in possibleValues){
+    //     currentVacancyIndex --
+    //     THEN:
+    //     vacancyList[currentVacancyIndex]['currentValueIndex'] ++
+    //     THEN:
+    //     testValue(table, vacancyList, vacancyList[currentVacancyIndex]['row'], vacancyList[currentVacancyIndex]['col'])
+
+    //   } else {
+    //     vacancyList[currentVacancyIndex]['currentValueIndex'] ++
+    //     THEN:
+    //     textValue(table, vacancyList, vacancyList[currentVacancyIndex]['row'], vacancyList[currentVacancyIndex]['col'])
+  
+    //   }
+      
+    // }
+  }
 
   solveSudoku(table){
-    // Currently puts in the first value of possibleValues for each vacancy:
     let sortedVacancyList = sudokuAnalyzer.analyzeVacancies(this.state.table);
-    console.log(sortedVacancyList);
-    for (let i = 0; i <= sortedVacancyList.length-1; i++){
-      let row = sortedVacancyList[i]['row'];
-      let col = sortedVacancyList[i]['col'];
-      // console.log(`index of sortedVacancyList = ${i}, row=${row}, col=${col}`);
+    // Start by putting the first possible value into the first vacancy, and then test with testValue function
+    let row = sortedVacancyList[0]['row'];
+    let col = sortedVacancyList[0]['col'];
+    table[`row${row}`][`col${col}`] = sortedVacancyList[0]['possibleValues'][0];
 
-      table[`row${row}`][`col${col}`] = sortedVacancyList[i]['possibleValues'][0];
-    }
-    this.setState({table: table});
+    this.setState({
+      vacancyList: sortedVacancyList,
+      table: table
+    }, ()=>{this.testValue(row, col)});
 
+    // this.setState({
+    //   vacancyList: sortedVacancyList,
+
+    // }, ()=>{this.testValue(this.state.vacancyList[this.state.currentVacancyIndex]['row'], this.state.vacancyList[this.state.currentVacancyIndex]['col']);});
+    
   }
 
 
@@ -466,7 +531,7 @@ class Table extends Component {
           </table>
         <button onClick={()=>{console.log('Is row2, col2 Valid?:', sudokuAnalyzer.isCellValid(this.state.table, 2,2))}} >isCellValid(table, 2,2)</button>
         <button onClick={()=>{console.log('Valid numbers for (row5, col5) are:', sudokuAnalyzer.determineValidNumbers(this.state.table, 5,5))}} >Determine Valid Numbers for row5,col5</button>
-        <button onClick={()=>{sudokuAnalyzer.analyzeVacancies(this.state.table, [])}} >Determine Valid Numbers for all Vacancies</button>
+        <button onClick={()=>{console.log(sudokuAnalyzer.analyzeVacancies(this.state.table, []))}} >Determine Valid Numbers for all Vacancies</button>
         <button onClick={()=>{this.solveSudoku(this.state.table)}} >Solve!!</button>
       </div>
     );
