@@ -343,8 +343,8 @@ class Table extends Component {
   }
   
   testValue(row, col){
-    let stopIndex = 5; 
-    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, testing value:${this.state.table[`row${row}`][`col${col}`]} in row:${row}, col:${col}`);
+    let stopIndex = 16; 
+    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, testing value:${this.state.table[`row${row}`][`col${col}`]} in row:${row}, col:${col}...`);
 
     let table = this.state.table;
     // let vacancyList = this.state.vacancyList;
@@ -365,20 +365,32 @@ class Table extends Component {
           table: table
         }, ()=>{this.testValue(row, col)});
 
-        //currentVacancyIndex ++
-        // THEN
-        // set next vacancy's value to possibleValues[currentVacancyIndex]
-        //THEN
-        //testValue()
-
-
       } else if (this.state.currentVacancyIndex === stopIndex){
         console.log('DONE!!!')
       } else {
-        console.log('Somthing went wrong....')
+        console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
     } else {
-      console.log('Else: Cell Invalid....... ');
+      console.log('Cell Invalid.......');
+      // IF there are more possibleValues to try:
+      if (this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] <= this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length - 1){
+        // try the next value in that vacancy's possibleValues list:
+        console.log('trying the next value in possibleValues');
+        let currentValueIndex = this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] + 1;
+
+        let vacancyList = this.state.vacancyList;
+        table[`row${row}`][`col${col}`] = this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'][currentValueIndex];
+        vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] = currentValueIndex;
+        this.setState({ table: table, vacancyList: vacancyList }, ()=>{this.testValue(row, col)});
+        
+      } else {
+        console.log('last possibleValue invalid!, need to Backtrack!!!')
+      }
+
+      // ELSE, BACKTRACK!
+
+
+
     }
 
 
