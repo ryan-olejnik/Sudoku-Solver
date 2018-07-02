@@ -343,19 +343,19 @@ class Table extends Component {
   }
   
   testValue(row, col){
-    let stopIndex = 16; 
-    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, testing value:${this.state.table[`row${row}`][`col${col}`]} in row:${row}, col:${col}...`);
-
+    let stopIndex = 17;
+    let currentVacancyIndex = this.state.currentVacancyIndex; 
+    let currentValueIndex = this.state.vacancyList[currentVacancyIndex].currentValueIndex; 
     let table = this.state.table;
+    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, trying value:${table[`row${row}`][`col${col}`]} (index: ${currentValueIndex}) in row:${row}, col:${col}...`);
+    console.log(`${table[`row${row}`][`col${col}`]} should equal ${this.state.vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]}`)
     // let vacancyList = this.state.vacancyList;
     if (sudokuAnalyzer.isCellValid(table, row, col)){
-      console.log(`value ${this.state.table[`row${row}`][`col${col}`]} in row ${row}, col ${col} is valid!, moving on to next vacancy...`);
+      console.log(`   value ${this.state.table[`row${row}`][`col${col}`]} in row ${row}, col ${col} is valid!, moving on to next vacancy...`);
 
-      // ONLY GO THROUGH THE FIRST 2 VALUES FOR NOW
       if (this.state.currentVacancyIndex < stopIndex){
         // Move on to the NEXT VACANCY
-        let currentVacancyIndex = this.state.currentVacancyIndex + 1; 
-        let currentValueIndex = this.state.vacancyList[currentVacancyIndex].currentValueIndex;
+        currentVacancyIndex++;
         let row = this.state.vacancyList[currentVacancyIndex]['row'];
         let col = this.state.vacancyList[currentVacancyIndex]['col'];
         table[`row${row}`][`col${col}`] = this.state.vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex];
@@ -371,11 +371,15 @@ class Table extends Component {
         console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
     } else {
-      console.log('Cell Invalid.......');
+      console.log('   cell Invalid.......');
+      console.log('   before incrementing index:')
+      console.log('   current vacancys index:', this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex']);
+      console.log('   current vacancys possibleValues.length:', this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length);
+      
       // IF there are more possibleValues to try:
-      if (this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] <= this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length - 1){
+      if (this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] < this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length - 1){
         // try the next value in that vacancy's possibleValues list:
-        console.log('trying the next value in possibleValues');
+        console.log('   trying the next value in possibleValues');
         let currentValueIndex = this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] + 1;
 
         let vacancyList = this.state.vacancyList;
@@ -384,7 +388,9 @@ class Table extends Component {
         this.setState({ table: table, vacancyList: vacancyList }, ()=>{this.testValue(row, col)});
         
       } else {
-        console.log('last possibleValue invalid!, need to Backtrack!!!')
+        //All of the possibleValues are invalid:
+        console.log('last possibleValue invalid!, need to Backtrack!!!');
+        
       }
 
       // ELSE, BACKTRACK!
@@ -392,27 +398,6 @@ class Table extends Component {
 
 
     }
-
-
-    // else {
-    //   ---------------
-    //   Cell is NOT valid, 
-
-    //   if (that was the last value in possibleValues){
-    //     currentVacancyIndex --
-    //     THEN:
-    //     vacancyList[currentVacancyIndex]['currentValueIndex'] ++
-    //     THEN:
-    //     testValue(table, vacancyList, vacancyList[currentVacancyIndex]['row'], vacancyList[currentVacancyIndex]['col'])
-
-    //   } else {
-    //     vacancyList[currentVacancyIndex]['currentValueIndex'] ++
-    //     THEN:
-    //     textValue(table, vacancyList, vacancyList[currentVacancyIndex]['row'], vacancyList[currentVacancyIndex]['col'])
-  
-    //   }
-      
-    // }
   }
 
   solveSudoku(table){
