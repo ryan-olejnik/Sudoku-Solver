@@ -345,14 +345,56 @@ class Table extends Component {
   testValue(row, col){
     let stopIndex = 17;
     let currentVacancyIndex = this.state.currentVacancyIndex; 
-    let currentValueIndex = this.state.vacancyList[currentVacancyIndex].currentValueIndex; 
+    let currentValueIndex = this.state.vacancyList[currentVacancyIndex].currentValueIndex;
+    let vacancyList = this.state.vacancyList; 
     let table = this.state.table;
-    console.log(`currentVacancyIndex = ${this.state.currentVacancyIndex}, trying value:${table[`row${row}`][`col${col}`]} (index: ${currentValueIndex}) in row:${row}, col:${col}...`);
-    console.log(`${table[`row${row}`][`col${col}`]} should equal ${this.state.vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]}`)
-    // let vacancyList = this.state.vacancyList;
-    if (sudokuAnalyzer.isCellValid(table, row, col)){
-      console.log(`   value ${this.state.table[`row${row}`][`col${col}`]} in row ${row}, col ${col} is valid!, moving on to next vacancy...`);
+    console.log(`currentVacancyIndex = ${currentVacancyIndex}, trying value:${table[`row${row}`][`col${col}`]} (index: ${currentValueIndex}) in row:${row}, col:${col}...`);
+    console.log('   table =', this.state.table);
+    console.log(`   ${table[`row${row}`][`col${col}`]} should equal ${this.state.vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]}`)
 
+    // FIRST, IF currentValueIndex is out of range, then BACKTRACK:
+    if (this.state.vacancyList[currentVacancyIndex].currentValueIndex > this.state.vacancyList[currentValueIndex]['possibleValues'].length - 1){
+      console.log('   currentValueIndex out of range, must backtrack!');
+      // delete current cell
+      table[`row${row}`][`col${col}`] = null;
+      // set the currentValueIndex back to 0;
+      vacancyList[currentVacancyIndex]['currentValueIndex'] = 0;
+      console.log(`   setting currentValueIndex to zero: currentValueIndex = ${vacancyList[currentVacancyIndex]['currentValueIndex']}`);
+
+      // PREVIOUS VACANCY:
+      // decrement currentVacancyIndex (to previous vacancy):
+      currentVacancyIndex--;
+      // increment currentValueIndex of previous vacancy:
+      vacancyList[currentVacancyIndex]['currentValueIndex'] = vacancyList[currentVacancyIndex]['currentValueIndex'] + 1;
+      // set cell in table to new value
+      let prevRow = vacancyList[currentVacancyIndex]['row'];
+      let prevCol = vacancyList[currentVacancyIndex]['col'];
+      let prevCurrentValueIndex = vacancyList[currentVacancyIndex]['currentValueIndex'];
+      console.log('   incrementing prevCurrentValueIndex to ', prevCurrentValueIndex);
+
+      table[`row${prevRow}`][`col${prevCol}`] = vacancyList[currentVacancyIndex]['possibleValues'][prevCurrentValueIndex];
+      console.log('   about to write to state:')
+      console.log('    table =', table);
+      console.log('    vacancyList =', vacancyList);
+      console.log('    currentVacancyIndex =', currentVacancyIndex);
+      this.setState({
+        table: table,
+        currentVacancyIndex: currentVacancyIndex,
+        vacancyList: vacancyList
+      }, ()=>{ this.testValue(prevRow, prevCol) })
+      console.log(`   backtracking to currentVacancyIndex ${currentVacancyIndex}`);
+    }
+    // ELSE IF THE CELL IS VALID:
+    else if (sudokuAnalyzer.isCellValid(table, row, col)){
+      console.log(`   value ${table[`row${row}`][`col${col}`]} is valid!, moving on to next vacancy...`);
+      
+      // -------------------------------------------------------
+      if (table[`row${row}`][`col${col}`] === undefined){
+        console.log('Sum Ting Wong....');
+        return;
+      }
+      // -----------------------------------------------------
+      
       if (this.state.currentVacancyIndex < stopIndex){
         // Move on to the NEXT VACANCY
         currentVacancyIndex++;
@@ -363,40 +405,22 @@ class Table extends Component {
         this.setState({
           currentVacancyIndex: currentVacancyIndex,
           table: table
-        }, ()=>{this.testValue(row, col)});
+        }, ()=>{ this.testValue(row, col) });
 
       } else if (this.state.currentVacancyIndex === stopIndex){
         console.log('DONE!!!')
       } else {
         console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
-    } else {
-      console.log('   cell Invalid.......');
-      console.log('   before incrementing index:')
-      console.log('   current vacancys index:', this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex']);
-      console.log('   current vacancys possibleValues.length:', this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length);
-      
-      // IF there are more possibleValues to try:
-      if (this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] < this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'].length - 1){
-        // try the next value in that vacancy's possibleValues list:
-        console.log('   trying the next value in possibleValues');
-        let currentValueIndex = this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] + 1;
-
-        let vacancyList = this.state.vacancyList;
-        table[`row${row}`][`col${col}`] = this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'][currentValueIndex];
-        vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] = currentValueIndex;
-        this.setState({ table: table, vacancyList: vacancyList }, ()=>{this.testValue(row, col)});
-        
-      } else {
-        //All of the possibleValues are invalid:
-        console.log('last possibleValue invalid!, need to Backtrack!!!');
-        
-      }
-
-      // ELSE, BACKTRACK!
-
-
-
+    }
+    // ELSE IF THE CELL IS NOT VALID
+    else {
+      console.log(`   ${table[`row${row}`][`col${col}`]} is invalid`);
+      console.log('   trying the next value in possibleValues');
+      let currentValueIndex = this.state.vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] + 1;
+      table[`row${row}`][`col${col}`] = this.state.vacancyList[this.state.currentVacancyIndex]['possibleValues'][currentValueIndex];
+      vacancyList[this.state.currentVacancyIndex]['currentValueIndex'] = currentValueIndex;
+      this.setState({ table: table, vacancyList: vacancyList }, ()=>{ this.testValue(row, col) });
     }
   }
 
@@ -406,17 +430,12 @@ class Table extends Component {
     let row = sortedVacancyList[0]['row'];
     let col = sortedVacancyList[0]['col'];
     table[`row${row}`][`col${col}`] = sortedVacancyList[0]['possibleValues'][0];
+    console.log(`sortedVacancyList[0]['possibleValues'][0] = ${sortedVacancyList[0]['possibleValues'][0]}`);
 
     this.setState({
       vacancyList: sortedVacancyList,
       table: table
     }, ()=>{this.testValue(row, col)});
-
-    // this.setState({
-    //   vacancyList: sortedVacancyList,
-
-    // }, ()=>{this.testValue(this.state.vacancyList[this.state.currentVacancyIndex]['row'], this.state.vacancyList[this.state.currentVacancyIndex]['col']);});
-    
   }
 
 
@@ -527,8 +546,7 @@ class Table extends Component {
           </tbody>
           </table>
         <button onClick={()=>{console.log('Is row2, col2 Valid?:', sudokuAnalyzer.isCellValid(this.state.table, 2,2))}} >isCellValid(table, 2,2)</button>
-        <button onClick={()=>{console.log('Valid numbers for (row5, col5) are:', sudokuAnalyzer.determineValidNumbers(this.state.table, 5,5))}} >Determine Valid Numbers for row5,col5</button>
-        <button onClick={()=>{console.log(sudokuAnalyzer.analyzeVacancies(this.state.table, []))}} >Determine Valid Numbers for all Vacancies</button>
+        <button onClick={()=>{this.setState({ vacancyList: sudokuAnalyzer.analyzeVacancies(this.state.table) })}} >Determine Valid Numbers for all Vacancies</button>
         <button onClick={()=>{this.solveSudoku(this.state.table)}} >Solve!!</button>
       </div>
     );
