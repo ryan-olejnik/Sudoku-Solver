@@ -272,16 +272,18 @@ const sudokuAnalyzer = {
           let newVacancy = {
             row: row,
             col: col,
-            possibleValues: this.determineValidNumbers(table, row, col),
+            // possibleValues: this.determineValidNumbers(table, row, col),
+            possibleValues: [1,2,3,4,5,6,7,8,9],
             currentValueIndex: 0
           };
           vacancyList.push(newVacancy);          
         }
       }
     }
-    let sortedVacancyList = vacancyList.sort(function(a,b){return a.possibleValues.length - b.possibleValues.length});
-    // console.log(sortedVacancyList);
-    return sortedVacancyList;
+    // FOR NOW, DO NOT SORT VACANCIES
+    // vacancyList.sort(function(a,b){return a.possibleValues.length - b.possibleValues.length});
+
+    return vacancyList;
   }
 }
 

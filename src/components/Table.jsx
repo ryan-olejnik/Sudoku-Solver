@@ -109,7 +109,8 @@ class Table extends Component {
           }
         }, 
         vacancyList: [], // (sorted)
-        currentVacancyIndex: 0 // Start at the first item in the vacancyList
+        currentVacancyIndex: 0, // Start at the first item in the vacancyList
+        highestReachedIndex: 0
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.testValue = this.testValue.bind(this);
@@ -345,31 +346,23 @@ class Table extends Component {
   }
   
   testValue(row, col){
-    let timeout = 1;
-    let stopIndex = 47;
-    let currentVacancyIndex = this.state.currentVacancyIndex; 
+    let timeout = 0;
     let vacancyList = this.state.vacancyList; 
+    let stopIndex = vacancyList.length - 1; 
+    let currentVacancyIndex = this.state.currentVacancyIndex; 
     let currentValueIndex = vacancyList[currentVacancyIndex]['currentValueIndex'];
     let table = this.state.table;
-    console.log(`currentVacancyIndex = ${currentVacancyIndex}, trying value:${table[`row${row}`][`col${col}`]} (index: ${currentValueIndex}) in row:${row}, col:${col}...`);
-
-    // console.log('currentValueIndex =', currentValueIndex);
-    // console.log('   table =', this.state.table);
-    console.log(`   ${table[`row${row}`][`col${col}`]} (from table) should equal ${vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]} (from vacancyList)`)
-
-    if (table[`row${row}`][`col${col}`] !== vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]){
-      console.log('hmmmmmm......');
-      return;
-    }
+    // console.log(`currentVacancyIndex = ${currentVacancyIndex}, trying value:${table[`row${row}`][`col${col}`]} (index: ${currentValueIndex}) in row:${row}, col:${col}...`);
+    // console.log(`   ${table[`row${row}`][`col${col}`]} should equal ${vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]}`);
 
     // FIRST, IF currentValueIndex is out of range, then BACKTRACK:
-    if (this.state.vacancyList[currentVacancyIndex].currentValueIndex > vacancyList[currentValueIndex]['possibleValues'].length - 1){
-      console.log('   currentValueIndex out of range, must backtrack!');
+    if (vacancyList[currentVacancyIndex].currentValueIndex > vacancyList[currentValueIndex]['possibleValues'].length - 1){
+      // console.log('   currentValueIndex out of range, must backtrack!');
       // delete current cell
       table[`row${row}`][`col${col}`] = null;
       // set the currentValueIndex back to 0;
       vacancyList[currentVacancyIndex]['currentValueIndex'] = 0;
-      console.log(`   setting currentValueIndex to zero: currentValueIndex = ${vacancyList[currentVacancyIndex]['currentValueIndex']}`);
+      // console.log(`   setting currentValueIndex to zero: currentValueIndex = ${vacancyList[currentVacancyIndex]['currentValueIndex']}`);
 
       // PREVIOUS VACANCY:
       // decrement currentVacancyIndex (to previous vacancy):
@@ -383,26 +376,25 @@ class Table extends Component {
 
       table[`row${prevRow}`][`col${prevCol}`] = vacancyList[currentVacancyIndex]['possibleValues'][prevCurrentValueIndex];
       
-      console.log('   incrementing prevCurrentValueIndex to ', prevCurrentValueIndex, 'changing cell value to:', table[`row${prevRow}`][`col${prevCol}`]);
-      // console.log('   about to write to state:')
-      // console.log('    table =', table);
-      // console.log('    vacancyList =', vacancyList);
-      // console.log('    currentVacancyIndex =', currentVacancyIndex);
-      // console.log('    previousVacancyValue =', table[`row${prevRow}`][`col${prevCol}`]); 
+      // console.log('   incrementing prevCurrentValueIndex to ', prevCurrentValueIndex, 'changing cell value to:', table[`row${prevRow}`][`col${prevCol}`]);
       this.setState({
         table: table,
         currentVacancyIndex: currentVacancyIndex,
         vacancyList: vacancyList
       }, ()=>{ setTimeout(()=>{this.testValue(prevRow, prevCol);}, timeout) })
-      console.log(`   backtracking to currentVacancyIndex ${currentVacancyIndex}`);
+      // console.log(`   backtracking to currentVacancyIndex ${currentVacancyIndex}`);
     }
     // ELSE IF THE CELL IS VALID:
     else if (sudokuAnalyzer.isCellValid(table, row, col)){
-      console.log(`   value ${table[`row${row}`][`col${col}`]} is valid!, moving on to next vacancy...`);
+      // console.log(`   value ${table[`row${row}`][`col${col}`]} is valid!, moving on to next vacancy...`);
       
       // -------------------------------------------------------
       if (table[`row${row}`][`col${col}`] === undefined){
-        console.log('Sum Ting Wong....');
+        // console.log('Error: backtracked back to the beginning...');
+        // console.log('currentVacancyIndex =', currentVacancyIndex);
+        // console.log('vacancyList=', vacancyList);
+        // console.log('table: ', table);
+        // console.log('this.state: ', this.state);
         return;
       }
       // -----------------------------------------------------
@@ -410,6 +402,12 @@ class Table extends Component {
       if (currentVacancyIndex < stopIndex){
         // Move on to the NEXT VACANCY
         currentVacancyIndex++;
+        let highestReachedIndex = this.state.highestReachedIndex;
+
+        if (currentVacancyIndex > highestReachedIndex){
+          highestReachedIndex = currentVacancyIndex;
+        }
+
         let newRow = vacancyList[currentVacancyIndex]['row'];
         let newCol = vacancyList[currentVacancyIndex]['col'];
         currentValueIndex = vacancyList[currentVacancyIndex]['currentValueIndex'];
@@ -418,26 +416,27 @@ class Table extends Component {
         // debugger;
         this.setState({
           currentVacancyIndex: currentVacancyIndex,
-          table: table
+          table: table,
+          highestReachedIndex: highestReachedIndex
         }, ()=>{ setTimeout(()=>{this.testValue(newRow, newCol)}, timeout) });
 
       } else if (this.state.currentVacancyIndex === stopIndex){
-        console.log('DONE!!!')
+        // console.log('DONE!!!')
       } else {
-        console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
+        // console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
     }
     // ELSE IF THE CELL IS NOT VALID 
     else {
-      console.log(`   ${table[`row${row}`][`col${col}`]} is invalid`);
-      console.log('   trying the next value in possibleValues');
+      // console.log(`   ${table[`row${row}`][`col${col}`]} is invalid`);
+      // console.log('   trying the next value in possibleValues');
       currentValueIndex = vacancyList[currentVacancyIndex]['currentValueIndex'] + 1;
       table[`row${row}`][`col${col}`] = vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex];
       vacancyList[currentVacancyIndex]['currentValueIndex'] = currentValueIndex;
-      console.log('about to write to state:');
-      console.log('  table:', table);
-      console.log('  vacancyList:', vacancyList);
-      console.log('  currentVacancyIndex:', currentVacancyIndex);
+      // console.log('about to write to state:');
+      // console.log('  table:', table);
+      // console.log('  vacancyList:', vacancyList);
+      // console.log('  currentVacancyIndex:', currentVacancyIndex);
       // debugger;
       this.setState({ table: table, vacancyList: vacancyList }, ()=>{ setTimeout(()=>{this.testValue(row, col)}, timeout) });
     }
