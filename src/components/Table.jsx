@@ -109,8 +109,9 @@ class Table extends Component {
           }
         }, 
         vacancyList: [], // (sorted)
-        currentVacancyIndex: 0, // Start at the first item in the vacancyList
-        highestReachedIndex: 0
+        currentVacancyIndex: 0, 
+        highestReachedIndex: 0,
+        isComplete: false
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.testValue = this.testValue.bind(this);
@@ -223,6 +224,112 @@ class Table extends Component {
     })
   }
 
+  fillHardExample(){
+    this.setState({
+        table: {
+          row1: {
+            col1: 8,
+            col2: null,
+            col3: 4,
+            col4: null,
+            col5: 1,
+            col6: 3,
+            col7: null,
+            col8: null,
+            col9: 9,
+          },
+          row2: {
+            col1: 7,
+            col2: null,
+            col3: null,
+            col4: null,
+            col5: null,
+            col6: 8,
+            col7: 1,
+            col8: 5,
+            col9: null,
+          },
+          row3: {
+            col1: 9,
+            col2: 1,
+            col3: null,
+            col4: null,
+            col5: null,
+            col6: null,
+            col7: null,
+            col8: null,
+            col9: null,
+          },
+          row4: {
+            col1: null,
+            col2: null,
+            col3: null,
+            col4: null,
+            col5: 2,
+            col6: null,
+            col7: null,
+            col8: null,
+            col9: null,
+          },
+          row5: {
+            col1: 4,
+            col2: 7,
+            col3: null,
+            col4: null,
+            col5: null,
+            col6: null,
+            col7: null,
+            col8: 8,
+            col9: 1,
+          },
+          row6: {
+            col1: null,
+            col2: null,
+            col3: null,
+            col4: null,
+            col5: 8,
+            col6: null,
+            col7: null,
+            col8: null,
+            col9: null,
+          },
+          row7: {
+            col1: null,
+            col2: null,
+            col3: null,
+            col4: null,
+            col5: null,
+            col6: null,
+            col7: null,
+            col8: 1,
+            col9: 2,
+          },
+          row8: {
+            col1: null,
+            col2: 5,
+            col3: 9,
+            col4: 1,
+            col5: null,
+            col6: null,
+            col7: null,
+            col8: null,
+            col9: 3,
+          },
+          row9: {
+            col1: 1,
+            col2: null,
+            col3: null,
+            col4: 2,
+            col5: 7,
+            col6: null,
+            col7: 9,
+            col8: null,
+            col9: 6,
+          }
+        }
+    })
+  }
+
   clearTable(){
     this.setState({
         table: {
@@ -332,6 +439,8 @@ class Table extends Component {
   componentWillReceiveProps(newProps){
     if (newProps.fill === 'easy'){
       this.fillEasyExample();
+    } else if (newProps.fill === 'hard'){
+      this.fillHardExample();
     } else if (newProps.fill === null){
       this.clearTable();
     }
@@ -421,7 +530,8 @@ class Table extends Component {
         }, ()=>{ setTimeout(()=>{this.testValue(newRow, newCol)}, timeout) });
 
       } else if (this.state.currentVacancyIndex === stopIndex){
-        // console.log('DONE!!!')
+        this.setState({ isComplete: true });
+        console.log('DONE!!!')
       } else {
         // console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
@@ -455,10 +565,26 @@ class Table extends Component {
     }, ()=>{ setTimeout(()=>{this.testValue(row, col)}, 100) });
   }
 
+
+  setStartStyle(){
+    // run this when first clicking solve
+    // Set all fixed numbers to black
+    // set all changing numbers to blue
+  }
+
+  setFinishStye(){
+    // set all values to Green
+  }
+
   render() {
+    let tableClassName = 'sudokuTable';
+    if (this.state.isComplete){
+      tableClassName = 'sudokuTable-complete';
+    }
+
     return (
       <div className="Table">
-        <table className="sudokuTable">
+        <table className={tableClassName}>
           <tbody>
           <tr> 
             <td className='top-edge-bold left-edge-bold'><InputBox number={this.state.table.row1.col1}  changeHandler={(newValue)=>{this.changeHandler(1,1,newValue)}} /></td>
