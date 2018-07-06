@@ -28,10 +28,17 @@ table.sudokuTable tbody td {
 }
 
 #solve-button {
-  font-size: -webkit-xxx-large;
+  font-size: x-large;
   padding: 10px;
   padding-left: 40px;
   padding-right: 40px;
   border-radius: 10px;
   margin: 5px;
 }
+
+/*WHEN FINISHED:
+  box-shadow: 0px 0px 20px 9px #1dff00;
+
+
+
+*/
