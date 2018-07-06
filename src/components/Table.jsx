@@ -561,8 +561,7 @@ class Table extends Component {
           </tr>
           </tbody>
           </table>
-        <button onClick={()=>{this.setState({ vacancyList: sudokuAnalyzer.analyzeVacancies(this.state.table) })}} >Determine Valid Numbers for all Vacancies</button>
-        <button onClick={()=>{this.solveSudoku(this.state.table)}} >Solve!!</button>
+        <button id='solve-button' onClick={()=>{this.solveSudoku(this.state.table)}} >Solve!!</button>
       </div>
     );
   }

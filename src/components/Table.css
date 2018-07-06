@@ -26,3 +26,12 @@ table.sudokuTable tbody td {
 .top-edge-bold {
   border-top-width: 3px !important;
 }
+
+#solve-button {
+  font-size: -webkit-xxx-large;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 10px;
+  margin: 5px;
+}

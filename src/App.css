@@ -1,3 +1,12 @@
+h1 {
+  font-size: -webkit-xxx-large;
+  
+}
+
 .App {
   text-align: center;
+}
+
+button {
+  font-size: large;  
 }
