@@ -118,9 +118,121 @@ class Table extends Component {
     this.solveSudoku = this.solveSudoku.bind(this);
   }
 
-  fillEasyExample(){
+  fillExample1(){
     this.setState({
-        table: {
+      isComplete: false,
+      vacancyList: [],
+      currentVacancyIndex: 0,
+      table: {
+        row1: {
+          col1: null,
+          col2: null,
+          col3: null,
+          col4: 2,
+          col5: 6,
+          col6: null,
+          col7: 7,
+          col8: null,
+          col9: 1,
+        },
+        row2: {
+          col1: 6,
+          col2: 8,
+          col3: null,
+          col4: null,
+          col5: 7,
+          col6: null,
+          col7: null,
+          col8: 9,
+          col9: null,
+        },
+        row3: {
+          col1: 1,
+          col2: 9,
+          col3: null,
+          col4: null,
+          col5: null,
+          col6: 4,
+          col7: 5,
+          col8: null,
+          col9: null,
+        },
+        row4: {
+          col1: 8,
+          col2: 2,
+          col3: null,
+          col4: 1,
+          col5: null,
+          col6: null,
+          col7: null,
+          col8: 4,
+          col9: null,
+        },
+        row5: {
+          col1: null,
+          col2: null,
+          col3: 4,
+          col4: 6,
+          col5: null,
+          col6: 2,
+          col7: 9,
+          col8: null,
+          col9: null,
+        },
+        row6: {
+          col1: null,
+          col2: 5,
+          col3: null,
+          col4: null,
+          col5: null,
+          col6: 3,
+          col7: null,
+          col8: 2,
+          col9: 8,
+        },
+        row7: {
+          col1: null,
+          col2: null,
+          col3: 9,
+          col4: 3,
+          col5: null,
+          col6: null,
+          col7: null,
+          col8: 7,
+          col9: 4,
+        },
+        row8: {
+          col1: null,
+          col2: 4,
+          col3: null,
+          col4: null,
+          col5: 5,
+          col6: null,
+          col7: null,
+          col8: 3,
+          col9: 6,
+        },
+        row9: {
+          col1: 7,
+          col2: null,
+          col3: 3,
+          col4: null,
+          col5: 1,
+          col6: 8,
+          col7: null,
+          col8: null,
+          col9: null,
+        }
+      }
+    })
+  }
+
+  fillExample2(){
+    this.setState({
+      isComplete: false,
+      vacancyList: [],
+      currentVacancyIndex: 0,
+      table: {
         row1: {
           col1: 2,
           col2: null,
@@ -224,114 +336,9 @@ class Table extends Component {
     })
   }
 
-  fillHardExample(){
-    this.setState({
-        table: {
-          row1: {
-            col1: 8,
-            col2: null,
-            col3: 4,
-            col4: null,
-            col5: 1,
-            col6: 3,
-            col7: null,
-            col8: null,
-            col9: 9,
-          },
-          row2: {
-            col1: 7,
-            col2: null,
-            col3: null,
-            col4: null,
-            col5: null,
-            col6: 8,
-            col7: 1,
-            col8: 5,
-            col9: null,
-          },
-          row3: {
-            col1: 9,
-            col2: 1,
-            col3: null,
-            col4: null,
-            col5: null,
-            col6: null,
-            col7: null,
-            col8: null,
-            col9: null,
-          },
-          row4: {
-            col1: null,
-            col2: null,
-            col3: null,
-            col4: null,
-            col5: 2,
-            col6: null,
-            col7: null,
-            col8: null,
-            col9: null,
-          },
-          row5: {
-            col1: 4,
-            col2: 7,
-            col3: null,
-            col4: null,
-            col5: null,
-            col6: null,
-            col7: null,
-            col8: 8,
-            col9: 1,
-          },
-          row6: {
-            col1: null,
-            col2: null,
-            col3: null,
-            col4: null,
-            col5: 8,
-            col6: null,
-            col7: null,
-            col8: null,
-            col9: null,
-          },
-          row7: {
-            col1: null,
-            col2: null,
-            col3: null,
-            col4: null,
-            col5: null,
-            col6: null,
-            col7: null,
-            col8: 1,
-            col9: 2,
-          },
-          row8: {
-            col1: null,
-            col2: 5,
-            col3: 9,
-            col4: 1,
-            col5: null,
-            col6: null,
-            col7: null,
-            col8: null,
-            col9: 3,
-          },
-          row9: {
-            col1: 1,
-            col2: null,
-            col3: null,
-            col4: 2,
-            col5: 7,
-            col6: null,
-            col7: 9,
-            col8: null,
-            col9: 6,
-          }
-        }
-    })
-  }
-
   clearTable(){
     this.setState({
+        isComplete: false,
         table: {
         row1: {
           col1: null,
@@ -437,10 +444,10 @@ class Table extends Component {
   }
 
   componentWillReceiveProps(newProps){
-    if (newProps.fill === 'easy'){
-      this.fillEasyExample();
-    } else if (newProps.fill === 'hard'){
-      this.fillHardExample();
+    if (newProps.fill === 1){
+      this.fillExample1();
+    } else if (newProps.fill === 2){
+      this.fillExample2();
     } else if (newProps.fill === null){
       this.clearTable();
     }
@@ -451,7 +458,7 @@ class Table extends Component {
     if (newValue === ''){newValue = null};
     let table = this.state.table;
     table[`row${row}`][`col${col}`] = newValue;
-    this.setState({ table: table })
+    this.setState({ table: table, isComplete: false })
   }
   
   testValue(row, col){
@@ -465,7 +472,8 @@ class Table extends Component {
     // console.log(`   ${table[`row${row}`][`col${col}`]} should equal ${vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex]}`);
 
     // FIRST, IF currentValueIndex is out of range, then BACKTRACK:
-    if (vacancyList[currentVacancyIndex].currentValueIndex > vacancyList[currentValueIndex]['possibleValues'].length - 1){
+    if (vacancyList[currentVacancyIndex].currentValueIndex > vacancyList[currentVacancyIndex]['possibleValues'].length - 1){
+      // If we are currently on vacancy index 0, then we cannot backtrack any more:
       // console.log('   currentValueIndex out of range, must backtrack!');
       // delete current cell
       table[`row${row}`][`col${col}`] = null;
@@ -499,11 +507,7 @@ class Table extends Component {
       
       // -------------------------------------------------------
       if (table[`row${row}`][`col${col}`] === undefined){
-        // console.log('Error: backtracked back to the beginning...');
-        // console.log('currentVacancyIndex =', currentVacancyIndex);
-        // console.log('vacancyList=', vacancyList);
-        // console.log('table: ', table);
-        // console.log('this.state: ', this.state);
+        console.log('Error: backtracked back to the beginning...');
         return;
       }
       // -----------------------------------------------------
@@ -521,8 +525,10 @@ class Table extends Component {
         let newCol = vacancyList[currentVacancyIndex]['col'];
         currentValueIndex = vacancyList[currentVacancyIndex]['currentValueIndex'];
         table[`row${newRow}`][`col${newCol}`] = vacancyList[currentVacancyIndex]['possibleValues'][currentValueIndex];
-
-        // debugger;
+        // console.log('about to write to state:');
+        // console.log('  table:', table);
+        // console.log('  vacancyList:', JSON.parse(JSON.stringify(vacancyList)));
+        // console.log('  currentVacancyIndex:', currentVacancyIndex);
         this.setState({
           currentVacancyIndex: currentVacancyIndex,
           table: table,
@@ -530,10 +536,10 @@ class Table extends Component {
         }, ()=>{ setTimeout(()=>{this.testValue(newRow, newCol)}, timeout) });
 
       } else if (this.state.currentVacancyIndex === stopIndex){
-        this.setState({ isComplete: true });
+        this.setState({ isComplete: true, vacancyList: [] });
         console.log('DONE!!!')
       } else {
-        // console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
+        console.log('Error....currentVacancyIndex somehow exceeded stopIndex')
       }
     }
     // ELSE IF THE CELL IS NOT VALID 
@@ -545,9 +551,8 @@ class Table extends Component {
       vacancyList[currentVacancyIndex]['currentValueIndex'] = currentValueIndex;
       // console.log('about to write to state:');
       // console.log('  table:', table);
-      // console.log('  vacancyList:', vacancyList);
+      // console.log('  vacancyList:', JSON.parse(JSON.stringify(vacancyList)));
       // console.log('  currentVacancyIndex:', currentVacancyIndex);
-      // debugger;
       this.setState({ table: table, vacancyList: vacancyList }, ()=>{ setTimeout(()=>{this.testValue(row, col)}, timeout) });
     }
   }
@@ -561,7 +566,9 @@ class Table extends Component {
 
     this.setState({
       vacancyList: vacancyList,
-      table: table
+      table: table,
+      currentVacancyIndex: 0,
+      highestReachedIndex: 0
     }, ()=>{ setTimeout(()=>{this.testValue(row, col)}, 100) });
   }
 
