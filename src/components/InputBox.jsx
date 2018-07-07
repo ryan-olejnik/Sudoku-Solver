@@ -17,7 +17,8 @@ class InputBox extends Component {
     const numberValue = (this.state.number)? this.state.number : '';
     return (
       <React.Fragment>
-        <textarea 
+        <textarea
+        className={this.props.textColor}
         rows="1" 
         cols="1" 
         maxLength='1' 
