@@ -17,14 +17,14 @@ table.sudokuTable tbody td {
 
 table.sudokuTable-complete {
   font-family: Arial, Helvetica, sans-serif;
-  border: 3px solid #006600;
+  border: 3px solid #009b00;
   background-color: #ccffcc;
   margin:10%;
   text-align: center;
   margin: auto;
 }
 table.sudokuTable-complete td, table.sudokuTable-complete th {
-  border: 1px solid #006600;
+  border: 1px solid #009b00;
   padding: 4px 4px;
 }
 table.sudokuTable-complete tbody td {
