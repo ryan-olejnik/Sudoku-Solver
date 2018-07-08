@@ -669,14 +669,13 @@ class Table extends Component {
   }
 
   solveSudoku(table){
-    // if sudoku is already solved:
-    if (this.state.isComplete){
+    // if there are no vacancies in the table:
+    if (sudokuAnalyzer.analyzeVacancies(table).length === 0){
+      alert('No Vacancies to analyze!');
       return;
-    }
+    }    
 
-    
-
-    let vacancyList = sudokuAnalyzer.analyzeVacancies(this.state.table);
+    let vacancyList = sudokuAnalyzer.analyzeVacancies(table);
     // Start by putting the first possible value into the first vacancy, and then test with testValue function
     let row = vacancyList[0]['row'];
     let col = vacancyList[0]['col'];
