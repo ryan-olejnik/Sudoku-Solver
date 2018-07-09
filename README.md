@@ -6,7 +6,7 @@ Created using React.js.
 
 ## Demo
 
-!['Main'](https://github.com/ryan-olejnik/Sudoku-Solver/blob/master/public/Sudoku-Wizard2.gif)
+!['Main'](https://github.com/ryan-olejnik/Sudoku-Solver/blob/master/public/sudoku-wizard.gif)
 
 
 ## Website
