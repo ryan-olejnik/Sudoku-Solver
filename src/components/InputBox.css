@@ -5,6 +5,7 @@ textarea {
   font-size: -webkit-xxx-large;
   text-align: center;
   margin-bottom: -3px;
+  overflow: hidden;
 }
 
 textarea.blue {
@@ -15,4 +16,6 @@ textarea.blue {
   font-size: -webkit-xxx-large;
   text-align: center;
   margin-bottom: -3px;
+  overflow: hidden;
+  
 }
