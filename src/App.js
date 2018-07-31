@@ -6,9 +6,24 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      fill: null 
+      fill: null,
+      windowWidth: 0
     };
-  }  
+    this.updateWindowWidth = this.updateWindowWidth.bind(this);
+  }
+
+  updateWindowWidth(){
+    this.setState({windowWidth: window.innerWidth});
+  }
+  
+  componentDidMount(){
+    this.updateWindowWidth();
+    window.addEventListener('resize', this.updateWindowWidth)
+  }
+
+  componentWillUnmount(){
+    window.addEventListener('resize', this.updateWindowWidth)
+  }
 
   render() {
     return (
