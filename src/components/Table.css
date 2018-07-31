@@ -2,9 +2,7 @@ table.sudokuTable {
   font-family: Arial, Helvetica, sans-serif;
   border: 3px solid #948473;
   background-color: #FFE3C6;
-  margin:10%;
   text-align: center;
-  margin: auto;
 }
 table.sudokuTable td, table.sudokuTable th {
   border: 1px solid #948473;
@@ -19,9 +17,7 @@ table.sudokuTable-complete {
   font-family: Arial, Helvetica, sans-serif;
   border: 3px solid #009b00;
   background-color: #ccffcc;
-  margin:10%;
   text-align: center;
-  margin: auto;
 }
 table.sudokuTable-complete td, table.sudokuTable-complete th {
   border: 1px solid #009b00;

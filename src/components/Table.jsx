@@ -812,7 +812,7 @@ class Table extends Component {
   }
 
   render() {
-    let tableClass = 'sudokuTable';    
+    let tableClass = 'sudokuTable';     
     if (this.state.isComplete){
       tableClass = 'sudokuTable-complete';
     }
