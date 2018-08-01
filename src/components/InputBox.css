@@ -1,21 +1,31 @@
 textarea {
   resize: none;
-  height: 45px;
-  width: 45px;
-  font-size: -webkit-xxx-large;
+  font-size: large;
   text-align: center;
-  margin-bottom: -3px;
   overflow: hidden;
 }
 
 textarea.blue {
   color: blue;
-  resize: none;
-  height: 45px;
-  width: 45px;
-  font-size: -webkit-xxx-large;
-  text-align: center;
-  margin-bottom: -3px;
-  overflow: hidden;
-  
+}
+
+@media only screen and (min-width: 700px) {
+  /* Desktop */
+  textarea {
+    font-size: 40px;
+    height: 45px;
+    width: 45px;
+    margin-bottom: -3px;
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  /* Phone */
+  textarea {
+    font-size: 27px;
+    height: 20px;
+    width: 20px;
+    margin-bottom: -4px;
+    margin-top: 1px;
+  }
 }

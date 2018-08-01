@@ -34,7 +34,7 @@ class App extends Component {
         <button id='fill-example1-button' onClick={()=>{this.setState({fill: 1})}}>Fill Example 1</button>
         <button id='fill-example2-button' onClick={()=>{this.setState({fill: 2})}}>Fill Example 2</button>
         <button id='clear-button'onClick={()=>{this.setState({fill: null})}}>Clear</button>
-        <Table fill={this.state.fill} />
+        <Table {...{fill: this.state.fill, windowWidth: this.state.windowWidth}}/>
       </div>
     );
   }

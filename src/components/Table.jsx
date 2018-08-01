@@ -814,7 +814,7 @@ class Table extends Component {
   render() {
     let tableClass = 'sudokuTable';     
     if (this.state.isComplete){
-      tableClass = 'sudokuTable-complete';
+      tableClass = 'sudokuTable complete';
     }
 
     return (
