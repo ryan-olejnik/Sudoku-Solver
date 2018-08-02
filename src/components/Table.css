@@ -1,44 +1,40 @@
 table.sudokuTable {
   font-family: Arial, Helvetica, sans-serif;
   border: 2px solid #948473;
-  background-color: #FFE3C6;
+  background-color: #ffe3c6;
   text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 700px) {
   /* Desktop */
   textarea {
     height: 45px;
     width: 45px;
   }
 
-  table.sudokuTable td, table.sudokuTable th {
+  table.sudokuTable td,
+  table.sudokuTable th {
     border: 1px solid #948473;
     padding: 4px 4px;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 699px) {
   /* Desktop */
   textarea {
     height: 30px;
     width: 30px;
   }
-  table.sudokuTable td, table.sudokuTable th {
+  table.sudokuTable td,
+  table.sudokuTable th {
     border: 1px solid #948473;
     padding: 2px 2px;
   }
 }
 
-
-
-
-
-
 /* table.sudokuTable tbody td {
   font-size: 13px;
 } */
-
 
 table.complete {
   font-family: Arial, Helvetica, sans-serif;
@@ -46,19 +42,14 @@ table.complete {
   background-color: #ccffcc;
   /* text-align: center; */
 }
-table.complete td, table.sudokuTable-complete th {
+table.complete td,
+table.sudokuTable-complete th {
   border: 1px solid #009b00;
   /* padding: 4px 4px; */
 }
 /* table.complete tbody td {
   font-size: 13px;
 } */
-
-
-
-
-
-
 
 .bottom-edge-bold {
   border-bottom-width: 2px !important;
