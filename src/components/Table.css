@@ -32,6 +32,9 @@ table.sudokuTable {
     border: 1px solid #948473;
     padding: 2px 2px;
   }
+  table.sudokuTable {
+    border-spacing: 1px;
+  }
 }
 
 /* table.sudokuTable tbody td {
