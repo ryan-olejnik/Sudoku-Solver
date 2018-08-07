@@ -6,8 +6,16 @@ h1 {
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 button {
-  font-size: large;  
+  font-size: large;
+}
+
+.button-bar {
+  display: flex;
+  justify-content: center;
 }
