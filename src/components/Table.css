@@ -1,3 +1,9 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 table.sudokuTable {
   font-family: Arial, Helvetica, sans-serif;
   border: 2px solid #948473;
