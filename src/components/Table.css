@@ -73,6 +73,8 @@ table.sudokuTable-complete th {
   padding-right: 40px;
   border-radius: 10px;
   margin: 5px;
+  width: 70%;
+  align-self: center;
 }
 
 /*WHEN FINISHED:
